@@ -17,6 +17,9 @@ s = requests.session()
 headers = {
                 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36'
             }
+proxyes = {"http": "209.127.191.180:9279", "https": "209.127.191.180:9279"}
+
+
 # print(s)
 # Create your views here.
 def loginUser(request):
@@ -37,7 +40,7 @@ def loginUser(request):
             try:
 
             # global response
-                response = s.post("https://www.seoreviewtools.com/wp-login.php",data=payload,headers = headers)
+                response = s.post("https://www.seoreviewtools.com/wp-login.php",data=payload,headers = headers,proxies = proxyes)
                 print("mai login hoagaya seoreview tools mai",response)
             # print(response.content)
             # if request.method == "POST":
@@ -97,13 +100,13 @@ def index(request):
                         lst.append(tag.text)
                     else:
                         pass
-                # print(lst)
+                print(lst)
                 # FOR DA PA MOZ RANK
                 d = {
                     "url": data,
                     "submit": "Submit"
                 }
-                b = s.post("https://demo.atozseotools.com/mozrank-checker/output",d,headers=headers)
+                b = s.post("https://demo.atozseotools.com/mozrank-checker/output",d,headers=headers,proxies = proxyes)
                 soup1 = BeautifulSoup(b.content, 'lxml')
                 # lst = []
                 counter = 0
