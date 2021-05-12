@@ -38,6 +38,7 @@ def loginUser(request):
 
             # global response
                 response = s.post("https://www.seoreviewtools.com/wp-login.php",data=payload,headers = headers)
+                print("mai login hoagaya seoreview tools mai",response)
             # print(response.content)
             # if request.method == "POST":
             # global search
@@ -85,7 +86,7 @@ def index(request):
                 }
 
                 a = s.post('https://www.seoreviewtools.com/website-traffic-checker/',data=m,headers=headers)
-
+                print("search hoagaya")
                 x = a.content
                 soup = BeautifulSoup(x, 'lxml')
                 # print("\nFind and print all li tags:\n")
